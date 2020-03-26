@@ -4,24 +4,31 @@ namespace App\DataFixtures;
 
 use App\Entity\Job;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Faker\Factory;
 
-class JobFixtures extends Fixture 
+class JobFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create('fr_FR');
+        $job1 = new Job();
+        $job1-> setTitle('planteur de choux');
+        $manager->persist($job1);
 
-        for($i=0; $i < 5; $i++) {
+        $job2 = new Job();
+        $job2->setTitle('poinconneur');
+        $manager->persist($job2);
 
-            $job = new Job();
-            $job->setTitle( $faker->jobTitle );
+        $job3 = new Job();
+        $job3->setTitle('chauffeur de salle');
+        $manager->persist($job3);
 
-            $manager->persist($job);
-        }
+        $job4 = new Job();
+        $job4->setTitle('animal de compagnie');
+        $manager->persist($job4);
 
+        $job5 = new Job();
+        $job5->setTitle('reveil matin');
+        $manager->persist($job5);
         $manager->flush();
     }
 }
