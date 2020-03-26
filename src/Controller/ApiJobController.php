@@ -26,7 +26,7 @@ class ApiJobController extends AbstractController
     }
 
     /**
-     * @Route("/api/jobs", name="api_job", methods={"GET"})
+     * @Route("/jobs", name="api_job", methods={"GET"})
      */
     public function index()
     {
@@ -44,7 +44,7 @@ class ApiJobController extends AbstractController
     }
 
     /**
-     * @Route("/api/jobs/{job}", name="api_job_show", methods={"GET"})
+     * @Route("/jobs/{job}", name="api_job_show", methods={"GET"})
      */
     public function show(Request $request)
     {
@@ -82,7 +82,7 @@ class ApiJobController extends AbstractController
     }
 
     /**
-     * @Route("/api/jobs/{job}", name="job_edit_patch", methods={"POST"})
+     * @Route("/jobs/{job}", name="job_edit_patch", methods={"POST"})
      * @param Job $job
      */
     public function edit(request $request, Job $job)
@@ -100,7 +100,7 @@ class ApiJobController extends AbstractController
         return new Response(null, 200);
     }
     /**
-     * @Route("api/jobs/{job}", name="api_job_delete", methods={"DELETE"})
+     * @Route("/jobs/{job}", name="api_job_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Job $job)
     {

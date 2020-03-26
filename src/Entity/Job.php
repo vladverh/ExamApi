@@ -16,13 +16,13 @@ class Job
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("all_jobs")
+     * @Groups({"all_jobs", "all_employees"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("all_jobs")
+     * @Groups({"all_jobs", "all_employees"})
      */
     private $title;
 

@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EmployeeRepository")
@@ -13,27 +14,32 @@ class Employee
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("all_employees")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("all_employees")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("all_employees")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("all_employees")
      */
     private $employement_date;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Job", inversedBy="employees")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("all_employees")
      */
     private $job;
 
@@ -66,9 +72,9 @@ class Employee
         return $this;
     }
 
-    public function getEmployementDate(): ?\DateTimeInterface
+    public function getEmployementDate(): string
     {
-        return $this->employement_date;
+        return date_format($this->employement_date, "Y-m-d");
     }
 
     public function setEmployementDate(\DateTimeInterface $employement_date): self
